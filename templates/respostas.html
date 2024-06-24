@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respostas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Respostas</h1>
+    <ul>
+        {% for question in questions %}
+            <li >
+                <p ><strong>Pergunta:</strong> {{ question['statement'] | safe }}</p>
+                <ul class="resposta">
+                    {% for option in question['options'].values() %}
+                        {% if option.get('answer') %}
+                            <li class="resposta">
+                                <strong>Resposta Correta:</strong> {{ option['statement'] | safe }}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('materias') }}">Voltar às matérias</a>
+</body>
+</body>
+</html>

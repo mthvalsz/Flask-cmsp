@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Atividades</h1>
+    <p>E agora, selecione a atividade que deseja ver a resposta:</p>
+    <ul>
+        {% for atividade in atividades %}
+            <li><a href="{{ url_for('respostas', atividadeId=atividade['id']) }}">{{ atividade['title'] }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('materias') }}">Voltar às matérias</a>
+</body>
+</html>
